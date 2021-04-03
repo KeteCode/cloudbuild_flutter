@@ -13,12 +13,16 @@ ENV PATH "$PATH:/home/developer/flutter/bin"
 
 RUN flutter precache
 
-RUN flutter sdk-path
-
-RUN flutter doctor
+#RUN flutter doctor
 
 
 COPY . ./
+
+RUN flutter channel beta
+
+RUN flutter upgrade
+
+RUN flutter config --enable-web
 
 RUN flutter build web
 
