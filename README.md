@@ -1,6 +1,6 @@
 # flutter_web_sample2
 
-A new Flutter project.
+A new Flutter project to demonstrate the web capabilities of flutter while deploying with Docker.
 
 ## Getting Started
 
