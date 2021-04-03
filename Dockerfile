@@ -1,5 +1,10 @@
 FROM ubuntu:xenial
 
+WORKDIR /usr/src/app
+
+RUN mkdir sandbox
+RUN ls
+
 RUN  apt-get update \
   && apt-get install -y wget \
   && apt-get install tar \
@@ -7,7 +12,7 @@ RUN  apt-get update \
 
 RUN wget https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_2.1.0-12.2.pre-beta.tar.xz
 
-RUN tar xf flutter_linux_2.1.0-12.2.pre-beta.tar.xz
+RUN tar xf ~/Downloads/flutter_linux_2.1.0-12.2.pre-beta.tar.xz
 
 RUN export PATH="$PATH:`pwd`/flutter/bin"
 
@@ -17,7 +22,6 @@ RUN flutter sdk-path
 
 RUN flutter doctor
 
-WORKDIR /usr/src/app
 
 COPY . ./
 
