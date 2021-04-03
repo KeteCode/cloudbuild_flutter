@@ -19,8 +19,8 @@ RUN flutter precache
 
 COPY . ./
 
-RUN chown -R developer:developer /home/developer
-RUN chmod -R u+w /home/developer
+# RUN chown -R developer:developer /home/developer
+# RUN chmod -R u+w /home/developer
 
 RUN flutter channel beta
 
