@@ -6,10 +6,7 @@ RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjd
 RUN useradd -ms /bin/bash developer
 USER developer
 WORKDIR /home/developer
-RUN chown -R developer:developer /home/developer
-RUN chmod -R u+w /home/developer
-RUN chmod u+w /home/developer/android
-RUN chmod u+w /home/developer/ios
+
 
 RUN git clone https://github.com/flutter/flutter.git
 
@@ -21,6 +18,9 @@ RUN flutter precache
 
 
 COPY . ./
+
+RUN chown -R developer:developer /home/developer
+RUN chmod -R u+w /home/developer
 
 RUN flutter channel beta
 
