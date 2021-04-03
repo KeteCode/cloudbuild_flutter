@@ -1,12 +1,11 @@
 FROM ubuntu:xenial
 
-WORKDIR /usr/src/app
-
-RUN mkdir sandbox
-RUN ls
-
 RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget
 
+# Set up new user
+RUN useradd -ms /bin/bash developer
+USER developer
+WORKDIR /home/developer
 
 RUN wget https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_2.1.0-12.2.pre-beta.tar.xz
 
