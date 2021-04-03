@@ -2,6 +2,14 @@
 
 A new Flutter project to demonstrate the web capabilities of flutter while deploying with Docker.
 
+Flutter version used for this sample 
+```
+Flutter 2.1.0-12.2.pre • channel beta • https://github.com/flutter/flutter.git
+Framework • revision 5bedb7b1d5 (2 weeks ago) • 2021-03-17 17:06:30 -0700
+Engine • revision 711ab3fda0
+Tools • Dart 2.13.0 (build 2.13.0-116.0.dev)
+```
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
