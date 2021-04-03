@@ -7,11 +7,9 @@ RUN useradd -ms /bin/bash developer
 USER developer
 WORKDIR /home/developer
 
-RUN wget https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_2.1.0-12.2.pre-beta.tar.xz
+RUN git clone https://github.com/flutter/flutter.git
 
-RUN tar xf flutter_linux_2.1.0-12.2.pre-beta.tar.xz
-
-RUN export PATH="$PATH:`pwd`/flutter/bin"
+ENV PATH "$PATH:/home/developer/flutter/bin"
 
 RUN flutter precache
 
