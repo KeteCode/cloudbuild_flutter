@@ -8,7 +8,8 @@ USER developer
 WORKDIR /home/developer
 RUN chown -R developer:developer /home/developer
 RUN chmod -R u+w /home/developer
-
+RUN chmod u+w /home/developer/android
+RUN chmod u+w /home/developer/ios
 
 RUN git clone https://github.com/flutter/flutter.git
 
@@ -27,10 +28,7 @@ RUN flutter upgrade
 
 RUN flutter config --enable-web
 
-RUN chmod -R u+w /home/developer/android
-RUN chmod -R u+w /home/developer/ios
-
-RUN flutter build web
+RUN /home/developer/flutter/bin build web
 
 RUN pub global activate dhttpd
 
