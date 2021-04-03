@@ -2,7 +2,11 @@ FROM ubuntu:xenial
 
 WORKDIR /usr/src/app
 
-RUN sudo snap install flutter --classic
+RUN git clone https://github.com/flutter/flutter.git
+
+RUN export PATH="$PATH:`pwd`/flutter/bin"
+
+RUN flutter precache
 
 RUN flutter sdk-path
 
