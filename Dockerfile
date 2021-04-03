@@ -6,7 +6,7 @@ RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjd
 RUN useradd -ms /bin/bash developer
 USER developer
 WORKDIR /home/developer
-RUN chown -R developer:developer /home/developer
+RUN chown -R developer:developer /opt/flutter
 
 RUN git clone https://github.com/flutter/flutter.git
 
