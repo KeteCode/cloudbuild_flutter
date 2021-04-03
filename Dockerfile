@@ -1,6 +1,12 @@
-FROM cirrusci/flutter:2.1.0-12.1.pre
+FROM ubuntu:xenial
 
 WORKDIR /usr/src/app
+
+RUN sudo snap install flutter --classic
+
+RUN flutter sdk-path
+
+RUN flutter doctor
 
 COPY . ./
 
