@@ -9,6 +9,7 @@ WORKDIR /home/developer
 RUN chown -R developer:developer /home/developer
 RUN chmod -R u+w /home/developer
 
+
 RUN git clone https://github.com/flutter/flutter.git
 
 ENV PATH "$PATH:/home/developer/flutter/bin"
@@ -25,6 +26,9 @@ RUN flutter channel beta
 RUN flutter upgrade
 
 RUN flutter config --enable-web
+
+RUN chmod -R u+w /home/developer/android
+RUN chmod -R u+w /home/developer/ios
 
 RUN flutter build web
 
