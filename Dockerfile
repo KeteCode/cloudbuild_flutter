@@ -7,7 +7,7 @@ RUN useradd -ms /bin/bash developer
 USER developer
 WORKDIR /home/developer
 RUN chown -R developer:developer /home/developer
-RUN chmod u+w developer
+RUN chmod u+w /home/developer
 
 RUN git clone https://github.com/flutter/flutter.git
 
