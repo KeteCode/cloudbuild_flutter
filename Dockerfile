@@ -1,8 +1,12 @@
 FROM ubuntu:xenial
 
-WORKDIR /usr/src/app
+RUN  apt-get update \
+  && apt-get install -y wget \
+  && rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/flutter/flutter.git
+RUN wget https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_2.1.0-12.2.pre-beta.tar.xz
+
+RUN tar xf flutter_linux_2.1.0-12.2.pre-beta.tar.xz
 
 RUN export PATH="$PATH:`pwd`/flutter/bin"
 
@@ -11,6 +15,8 @@ RUN flutter precache
 RUN flutter sdk-path
 
 RUN flutter doctor
+
+WORKDIR /usr/src/app
 
 COPY . ./
 
