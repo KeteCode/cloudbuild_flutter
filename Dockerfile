@@ -28,7 +28,7 @@ RUN flutter upgrade
 
 RUN flutter config --enable-web
 
-RUN /home/developer/flutter/bin build web
+RUN flutter build web --release
 
 RUN pub global activate dhttpd
 
