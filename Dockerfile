@@ -1,6 +1,6 @@
 FROM ubuntu:xenial
 
-RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget
+RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget python
 
 # Set up new user
 # RUN useradd -ms /bin/bash developer
@@ -20,6 +20,13 @@ WORKDIR /home/developer
 
 # USER developer
 
+# Getting Dart
+# RUN sh -c 'wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
+# RUN sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list'
+# RUN apt-get update
+# RUN apt-get install dart
+
+# Getting Flutter
 RUN git clone https://github.com/flutter/flutter.git
 
 ENV PATH "$PATH:/home/developer/flutter/bin"
@@ -45,6 +52,8 @@ RUN chmod 775 '/home/developer'
 
 RUN flutter build web --release
 
-RUN pub global activate dhttpd
+# RUN pub global activate dhttpd
 
-CMD ["dhttpd","--path", "build/web/"]
+WORKDIR /home/developer/build/web
+
+CMD ["python","-m","SimpleHTTPServer",  "8080"]
