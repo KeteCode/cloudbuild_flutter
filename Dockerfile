@@ -37,7 +37,7 @@ ENV PATH "$PATH:/home/developer/.linuxbrew/bin/brew"
 
 # RUN apt update && apt install build-essential
 
-RUN brew doctor
+# RUN brew doctor
 
 RUN brew install fastlane
 
