@@ -13,7 +13,7 @@ RUN addgroup --gid 1040 developer
 RUN adduser --disabled-password --gecos '' --uid 10401 --gid 1040 developer
 USER developer
 
-USER root
+
 
 # Getting Android SDK
 WORKDIR /home/developer
