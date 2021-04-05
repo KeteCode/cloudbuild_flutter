@@ -1,6 +1,6 @@
 FROM ubuntu:xenial
 
-RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget ruby-full linuxbrew-wrapper
+# RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget ruby-full 
 
 WORKDIR /usr/local
 
@@ -12,6 +12,8 @@ RUN chmod 777 '/var/lib/dpkg/'
 RUN addgroup --gid 1040 developer
 RUN adduser --disabled-password --gecos '' --uid 10401 --gid 1040 developer
 USER developer
+
+USER root
 
 # Getting Android SDK
 WORKDIR /home/developer
@@ -35,7 +37,10 @@ RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
 ENV PATH "$PATH:/home/developer/.linuxbrew/bin"
 ENV PATH "$PATH:/home/developer/.linuxbrew/bin/brew"
 
-# RUN apt update && apt install build-essential
+WORKDIR /usr/local
+USER root
+
+RUN apt update && apt install linuxbrew-wrapper build-essential
 
 # RUN brew doctor
 
