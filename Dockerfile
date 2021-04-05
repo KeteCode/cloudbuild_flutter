@@ -1,30 +1,32 @@
 FROM ubuntu:xenial
 
-RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget python
+RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget python ruby
 
-WORKDIR /home/developer
+# Getting Homebrew
+RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Getting Flutter
-RUN git clone https://github.com/flutter/flutter.git
+# Getting Fastlane
+RUN gem install fastlane
 
-ENV PATH "$PATH:/home/developer/flutter/bin"
+# WORKDIR /home/developer
 
-# RUN flutter precache
+# # Getting Flutter
+# RUN git clone https://github.com/flutter/flutter.git
 
-# RUN flutter doctor
+# ENV PATH "$PATH:/home/developer/flutter/bin"
 
-RUN flutter channel beta
+# RUN flutter channel beta
 
-RUN flutter upgrade
+# RUN flutter upgrade
 
-RUN flutter config --enable-web
+# RUN flutter config --enable-web
 
-COPY . ./
-RUN chmod 775 '/home/developer'
+# COPY . ./
+# RUN chmod 775 '/home/developer'
 
-# Build for web
-RUN flutter build web --release
+# # Build for web
+# RUN flutter build web --release
 
-WORKDIR /home/developer/build/web
+# WORKDIR /home/developer/build/web
 
-CMD ["python","-m","SimpleHTTPServer",  "8080"]
+# CMD ["python","-m","SimpleHTTPServer",  "8080"]
