@@ -8,9 +8,9 @@ RUN chmod 777 '/usr/local'
 RUN chmod 777 '/home/'
 
 
-RUN addgroup --gid 1040 developer
-RUN adduser --disabled-password --gecos '' --uid 10401 --gid 1040 developer
-USER developer
+# RUN addgroup --gid 1040 developer
+# RUN adduser --disabled-password --gecos '' --uid 10401 --gid 1040 developer
+# USER developer
 
 # Getting Android SDK
 WORKDIR /home/developer
