@@ -35,7 +35,7 @@ RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
 ENV PATH "$PATH:/home/developer/.linuxbrew/bin"
 ENV PATH "$PATH:/home/developer/.linuxbrew/bin/brew"
 
-RUN apt update && apt install build-essential
+# RUN apt update && apt install build-essential
 
 RUN brew doctor
 
