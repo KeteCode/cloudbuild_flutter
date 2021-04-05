@@ -36,25 +36,27 @@ WORKDIR /home/developer
 RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 # ENV PATH "$PATH:/home/developer/.linuxbrew/bin"
 # ENV PATH "$PATH:/home/developer/.linuxbrew/bin/brew"
+RUN echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/developer/.profile
+RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # WORKDIR /usr/local
 USER root
 
-RUN test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
-RUN test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-RUN test -r ~/.profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
-RUN echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+# RUN test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+# RUN test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+# RUN test -r ~/.profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+# RUN echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
 
 # ENV PATH "$PATH:/home/developer/.linuxbrew/bin"
 # ENV PATH "$PATH:/home/developer/.linuxbrew/bin/brew"
 
 # RUN apt update && apt install -y linuxbrew-wrapper build-essential
 
-# RUN brew doctor
+RUN brew doctor
 
 USER developer
 
-RUN brew install fastlane
+# RUN brew install fastlane
 
 # RUN curl -sSL https://get.rvm.io | bash -s stable
 # RUN rvm install 2.7
