@@ -7,8 +7,13 @@ WORKDIR /home/developer
 # Getting Homebrew
 # RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+RUN curl -sSL https://get.rvm.io | bash -s stable
+RUN rvm install 2.7
+RUN rvm use 2.7
+RUN gem install fastlane -NV
+
 # Getting Fastlane
-RUN gem install fastlane
+# RUN gem install fastlane
 
 
 
