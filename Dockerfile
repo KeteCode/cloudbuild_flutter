@@ -2,15 +2,20 @@ FROM ubuntu:xenial
 
 RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget ruby-full
 
-WORKDIR /home/developer
-
+WORKDIR /usr/local
 # Getting Homebrew
-# RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-RUN curl -sSL https://get.rvm.io | bash -s stable
-RUN rvm install 2.7
-RUN rvm use 2.7
-RUN gem install fastlane -NV
+# RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget ruby-full
+
+# WORKDIR /usr/local
+
+RUN brew install fastlane
+
+# RUN curl -sSL https://get.rvm.io | bash -s stable
+# RUN rvm install 2.7
+# RUN rvm use 2.7
+# RUN gem install fastlane -NV
 
 # Getting Fastlane
 # RUN gem install fastlane
