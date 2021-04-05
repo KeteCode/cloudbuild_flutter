@@ -6,11 +6,12 @@ WORKDIR /usr/local
 
 RUN chmod 777 '/usr/local'
 RUN chmod 777 '/home/'
+RUN chmod 777 '/var/lib/dpkg/'
 
 
-# RUN addgroup --gid 1040 developer
-# RUN adduser --disabled-password --gecos '' --uid 10401 --gid 1040 developer
-# USER developer
+RUN addgroup --gid 1040 developer
+RUN adduser --disabled-password --gecos '' --uid 10401 --gid 1040 developer
+USER developer
 
 # Getting Android SDK
 WORKDIR /home/developer
@@ -34,7 +35,7 @@ RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
 ENV PATH "$PATH:/home/developer/.linuxbrew/bin"
 ENV PATH "$PATH:/home/developer/.linuxbrew/bin/brew"
 
-RUN apt install build-essential
+RUN apt update && apt install build-essential
 
 RUN brew doctor
 
