@@ -2,13 +2,15 @@ FROM ubuntu:xenial
 
 RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget python ruby
 
+WORKDIR /home/developer
+
 # Getting Homebrew
-RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Getting Fastlane
 RUN gem install fastlane
 
-# WORKDIR /home/developer
+
 
 # # Getting Flutter
 # RUN git clone https://github.com/flutter/flutter.git
