@@ -40,9 +40,14 @@ ENV PATH "$PATH:/home/developer/.linuxbrew/bin/brew"
 WORKDIR /usr/local
 USER root
 
+ENV PATH "$PATH:/home/developer/.linuxbrew/bin"
+ENV PATH "$PATH:/home/developer/.linuxbrew/bin/brew"
+
 RUN apt update && apt install -y linuxbrew-wrapper build-essential
 
 # RUN brew doctor
+
+USER developer
 
 RUN brew install fastlane
 
