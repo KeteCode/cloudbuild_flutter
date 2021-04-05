@@ -3,6 +3,11 @@ FROM ubuntu:xenial
 RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget ruby-full
 
 WORKDIR /usr/local
+
+RUN useradd -ms /bin/bash developer
+RUN usermod -aG sudo developer
+USER developer
+
 # Getting Homebrew
 RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
