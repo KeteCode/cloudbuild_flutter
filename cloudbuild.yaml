@@ -17,7 +17,7 @@ steps:
 images:
   - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA'
 options:
-  machineType: N1_HIGHCPU_8
+  machineType: E2_HIGHCPU_8
   substitutionOption: ALLOW_LOOSE
 substitutions:
   _LABELS: gcb-trigger-id=4942d3bb-0a14-4137-a5f8-addbe54509dd
