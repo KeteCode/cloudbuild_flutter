@@ -34,16 +34,21 @@ WORKDIR /home/developer
 
 # Getting Homebrew
 RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-ENV PATH "$PATH:/home/developer/.linuxbrew/bin"
-ENV PATH "$PATH:/home/developer/.linuxbrew/bin/brew"
+# ENV PATH "$PATH:/home/developer/.linuxbrew/bin"
+# ENV PATH "$PATH:/home/developer/.linuxbrew/bin/brew"
 
-WORKDIR /usr/local
+# WORKDIR /usr/local
 USER root
 
-ENV PATH "$PATH:/home/developer/.linuxbrew/bin"
-ENV PATH "$PATH:/home/developer/.linuxbrew/bin/brew"
+RUN test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+RUN test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+RUN test -r ~/.profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+RUN echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
 
-RUN apt update && apt install -y linuxbrew-wrapper build-essential
+# ENV PATH "$PATH:/home/developer/.linuxbrew/bin"
+# ENV PATH "$PATH:/home/developer/.linuxbrew/bin/brew"
+
+# RUN apt update && apt install -y linuxbrew-wrapper build-essential
 
 # RUN brew doctor
 
