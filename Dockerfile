@@ -7,8 +7,9 @@ WORKDIR /usr/local
 RUN chmod 775 '/usr/local'
 RUN chmod 775 '/home/'
 
-RUN useradd -ms /bin/bash developer
-RUN usermod -aG sudo developer
+
+RUN addgroup --gid developerGroup developer
+RUN adduser --disabled-password --gecos '' --uid user007 --gid developerGroup developer
 USER developer
 
 # Getting Homebrew
