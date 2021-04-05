@@ -8,16 +8,13 @@ RUN chmod 775 '/usr/local'
 RUN chmod 775 '/home/'
 
 
-RUN addgroup --gid developerGroup developer
-RUN adduser --disabled-password --gecos '' --uid user007 --gid developerGroup developer
+RUN addgroup --gid 1040 developer
+RUN adduser --disabled-password --gecos '' --uid 10401 --gid 1040 developer
 USER developer
 
 # Getting Homebrew
 RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget ruby-full
-
-# WORKDIR /usr/local
 
 RUN brew install fastlane
 
