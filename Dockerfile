@@ -41,7 +41,7 @@ ENV PATH "$PATH:/home/linuxbrew/.linuxbrew/bin/brew"
 # RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # WORKDIR /usr/local
-USER root
+# USER root
 
 # RUN test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
 # RUN test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
