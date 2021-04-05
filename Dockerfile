@@ -1,6 +1,6 @@
-FROM ubuntu:xenial
+FROM ubuntu:16.04
 
-RUN apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget ruby-full gcc 
+RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget ruby-full gcc 
 
 WORKDIR /usr/local
 

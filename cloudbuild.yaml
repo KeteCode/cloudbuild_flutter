@@ -19,13 +19,14 @@ images:
 options:
   machineType: E2_HIGHCPU_8
   substitutionOption: ALLOW_LOOSE
+timeout: 1200s
 substitutions:
   _LABELS: gcb-trigger-id=4942d3bb-0a14-4137-a5f8-addbe54509dd
   _TRIGGER_ID: 4942d3bb-0a14-4137-a5f8-addbe54509dd
   _DEPLOY_REGION: europe-west1
   _GCR_HOSTNAME: eu.gcr.io
   _PLATFORM: managed
-  _SERVICE_NAME: flutter-web2
+  _SERVICE_NAME: flutter-cloudbuild
 tags:
   - gcp-cloud-build-deploy-cloud-run
   - gcp-cloud-build-deploy-cloud-run-managed
