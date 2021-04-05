@@ -50,7 +50,11 @@ RUN flutter config --enable-web
 COPY . ./
 RUN chmod 775 '/home/developer'
 
-RUN flutter build web --release
+# Build for web
+# RUN flutter build web --release
+
+# Build for iOS
+RUN flutter build ios
 
 # RUN pub global activate dhttpd
 
