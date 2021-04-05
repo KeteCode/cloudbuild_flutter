@@ -34,10 +34,11 @@ WORKDIR /home/developer
 
 # Getting Homebrew
 RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-# ENV PATH "$PATH:/home/developer/.linuxbrew/bin"
-# ENV PATH "$PATH:/home/developer/.linuxbrew/bin/brew"
-RUN echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/developer/.profile
-RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+ENV PATH "$PATH:/home/linuxbrew/.linuxbrew/bin"
+ENV PATH "$PATH:/home/linuxbrew/.linuxbrew/bin/brew"
+
+# RUN echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/developer/.profile
+# RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # WORKDIR /usr/local
 USER root
