@@ -4,6 +4,9 @@ RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjd
 
 WORKDIR /usr/local
 
+RUN chmod 775 '/usr/local'
+RUN chmod 775 '/home/'
+
 RUN useradd -ms /bin/bash developer
 RUN usermod -aG sudo developer
 USER developer
