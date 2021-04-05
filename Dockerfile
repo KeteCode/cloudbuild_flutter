@@ -53,6 +53,7 @@ ENV PATH "$PATH:/home/linuxbrew/.linuxbrew/bin/brew"
 
 # RUN apt update && apt install -y linuxbrew-wrapper build-essential
 
+RUN brew install gcc
 RUN brew doctor
 
 USER developer
