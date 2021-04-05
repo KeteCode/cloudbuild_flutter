@@ -4,8 +4,8 @@ RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjd
 
 WORKDIR /usr/local
 
-# RUN chmod 777 '/usr/local'
-# RUN chmod 777 '/home/'
+RUN chmod 777 '/usr/local'
+RUN chmod 777 '/home/'
 
 
 RUN addgroup --gid 1040 developer
