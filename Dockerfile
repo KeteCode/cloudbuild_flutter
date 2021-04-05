@@ -1,6 +1,6 @@
 FROM ubuntu:xenial
 
-# RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget ruby-full 
+RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget ruby-full 
 
 WORKDIR /usr/local
 
@@ -40,7 +40,7 @@ ENV PATH "$PATH:/home/developer/.linuxbrew/bin/brew"
 WORKDIR /usr/local
 USER root
 
-RUN apt update && apt install linuxbrew-wrapper build-essential
+RUN apt update && apt install -y linuxbrew-wrapper build-essential
 
 # RUN brew doctor
 
