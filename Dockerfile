@@ -1,6 +1,6 @@
 FROM ubuntu:xenial
 
-RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget ruby-full build-essential linuxbrew-wrapper
+RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget ruby-full linuxbrew-wrapper
 
 WORKDIR /usr/local
 
@@ -13,7 +13,7 @@ RUN adduser --disabled-password --gecos '' --uid 10401 --gid 1040 developer
 USER developer
 
 # Getting Android SDK
-# WORKDIR /home/developer
+WORKDIR /home/developer
 
 # # Prepare Android directories and system variables
 # RUN mkdir -p Android/sdk
@@ -31,9 +31,12 @@ USER developer
 
 # Getting Homebrew
 RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+ENV PATH "$PATH:/home/developer/.linuxbrew/bin"
+ENV PATH "$PATH:/home/developer/.linuxbrew/bin/brew"
 
-RUN echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/developer/.profile
-RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+RUN apt install build-essential
+
+RUN brew doctor
 
 RUN brew install fastlane
 
